@@ -1,0 +1,7 @@
+# Parce
+
+- Dev Build
+- Local Server
+- HMR - Hot Module Replacememt
+- File Watching Algorithm - written in C++
+- Caching - faster build

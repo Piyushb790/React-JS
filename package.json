@@ -1,0 +1,35 @@
+{
+  "name": "saini-react",
+  "version": "1.0.0",
+  "description": "This is namaste web series",
+  "main": "app.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piyushb790/React-JS.git"
+  },
+  "keywords": [
+    "namaste",
+    "react"
+  ],
+  "author": "piyush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piyushb790/React-JS/issues"
+  },
+  "homepage": "https://github.com/Piyushb790/React-JS#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":[
+    "last 10 version"
+  ]
+}
