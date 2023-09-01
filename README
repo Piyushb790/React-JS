@@ -5,3 +5,16 @@
 - HMR - Hot Module Replacememt
 - File Watching Algorithm - written in C++
 - Caching - faster build
+- Image Optimization
+- Minification of code
+- Bundling
+- compression of file
+- consistent hashing
+- code splitting
+- Differential Bundling - support older browser
+- Diagnostic
+- Error Handling
+- https enabler is also in parcel
+- zero config
+- Tree shaking algorithm - remove unused code
+- Different dev and prod bundles
