@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
-import Restaurant from "./components/Restaurant";
+import Body from "./components/Body";
 
 const AppLayout = () => {
   return (
     <div className="applayout">
       <Header />
-      <Restaurant />
+      <Body />
     </div>
   );
 };

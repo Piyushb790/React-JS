@@ -38,3 +38,8 @@
 .cardcomponent:hover{
     border: 1px solid #000;
 }
+.filterBtn{
+    margin-top: 5px;
+    padding: 4px;
+    border-radius: 2px;
+}
