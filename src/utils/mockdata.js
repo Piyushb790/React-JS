@@ -1,13 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const logoSrc =
-  "https://img.icons8.com/external-nawicon-flat-nawicon/64/external-restaurant-location-nawicon-flat-nawicon.png";
-
-const restaurantCardImg =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
-
-const restaurantList = [
+export const restaurantList = [
   {
     info: {
       id: "68758",
@@ -817,63 +808,3 @@ const restaurantList = [
     widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
   },
 ];
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div>
-        <img width="64" height="64" src={logoSrc} alt="logo " />
-      </div>
-      <div className="nav">
-        <ul className="links">
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-const RestaurantCard = (props) => {
-  const { restroData } = props;
-  const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
-    restroData?.info;
-  const { deliveryTime } = restroData?.info?.sla;
-
-  return (
-    <div className="cardcomponent">
-      <img src={restaurantCardImg + cloudinaryImageId} className="cardimg" />
-      <p>{name}</p>
-      <p>{cuisines}</p>
-      <p>{avgRating} ⭐ </p>
-      <p>{costForTwo}</p>
-      <p>{deliveryTime} minutes</p>
-    </div>
-  );
-};
-
-const Restaurant = () => {
-  return (
-    <div className="restaurant-container">
-      <div className="search">
-        <input type="search" /> search
-      </div>
-      <div className="cards">
-        {restaurantList.map((restro) => (
-          <RestaurantCard restroData={restro} key={restro.info.id} />
-        ))}
-      </div>
-    </div>
-  );
-};
-const AppLayout = () => {
-  return (
-    <div className="applayout">
-      <Header />
-      <Restaurant />
-    </div>
-  );
-};
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
