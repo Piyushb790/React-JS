@@ -10,7 +10,7 @@ const RestaurantCard = (props) => {
     <div className="cardcomponent">
       <img src={restaurantCardImg + cloudinaryImageId} className="cardimg" />
       <p>{name}</p>
-      <p>{cuisines}</p>
+      <p>{cuisines.join(", ")}</p>
       <p>{avgRating} ⭐ </p>
       <p>{costForTwo}</p>
       <p>{deliveryTime} minutes</p>

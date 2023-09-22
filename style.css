@@ -16,14 +16,14 @@
 }
 .cards{
    display: flex;
-   gap: 15px;
+   gap: 0 20px;
    flex-wrap: wrap;
    margin-top: 10px;
    
 }
 .cardimg {
-    width: 250px;
-    height: 250px;
+   width: 250px;
+   height: 250px;
 } 
 .search input{
     padding: 5px;
@@ -32,12 +32,11 @@
 .cardcomponent{
     width: 250px;
     
+    margin: 10px 0px;
     line-height: 15px;
     background-color: cornsilk;
 }
-.cardcomponent:hover{
-    border: 1px solid #000;
-}
+
 .filterBtn{
     margin-top: 5px;
     padding: 4px;
