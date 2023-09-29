@@ -6,7 +6,7 @@ const Header = () => {
   const [btnName, setBtnName] = useState("login");
   console.log("whole header render");
   useEffect(() => {
-    console.log("useEffect is Called");
+    // console.log("useEffect is Called");
   }, []);
   // when i put something into [] dependency array then everytime dependency updated useEffect also called
 
