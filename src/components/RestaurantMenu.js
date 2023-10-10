@@ -1,34 +1,44 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 import useResMenu from "../utils/useResMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
-  const menu = useResMenu(resId);
-  const { name, cuisines } = menu?.cards[0]?.card?.card?.info ?? {};
+  const [showIndex, setShowIndex] = useState(0);
 
-  const { itemCards } =
-    (menu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card ??
-      {}) ||
-    (menu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card ??
-      {});
+  const menu = useResMenu(resId);
+  const { name, cuisines, costForTwo } = menu?.cards[0]?.card?.card?.info ?? {};
+
+  const categories =
+    menu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  // console.log(categories);
 
   if (menu === null) return <Shimmer />;
   return (
-    <div>
-      <h1>{name}</h1>
-      <p>{cuisines.join(", ")}</p>
-      <h2>{itemCards[0].card.info.category}</h2>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item?.card?.info?.name} - Rs.
-            {item?.card?.info?.price / 100 ||
-              item?.card?.info?.defaultPrice / 100}
-          </li>
-        ))}
-      </ul>
+    <div className="m-8 text-center">
+      <h1 className="text-xl font-bold ">{name}</h1>
+      <p className="text-sm my-2">
+        {cuisines.join(", ")} - ₹ {costForTwo / 100}
+      </p>
+      {/* Categories accordian */}
+      {categories.map((category, index) => (
+        <RestaurantCategory
+          data={category?.card?.card}
+          key={index}
+          showItems={index === showIndex}
+          setShowIndex={setShowIndex}
+          index={index}
+        />
+      ))}
     </div>
   );
 };

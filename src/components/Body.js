@@ -3,7 +3,7 @@ import Shimmer from "./Shimmer";
 import { defaultRestraunts } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-const Body = () => {
+const Body = ({ user }) => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
@@ -11,7 +11,7 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  console.log(listOfRestaurant);
   const fetchData = async () => {
     const data = await fetch(defaultRestraunts);
     const json = await data.json();
@@ -71,7 +71,7 @@ const Body = () => {
       <div className="cards flex flex-wrap gap-6  ml-4 mt-2">
         {filteredRestaurant.map((restro) => (
           <Link key={restro.info.id} to={"/resMenu/" + restro.info.id}>
-            <RestaurantCard restroData={restro} />
+            <RestaurantCard restroData={restro} user={user} />
           </Link>
         ))}
       </div>

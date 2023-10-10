@@ -1,7 +1,6 @@
 import { restaurantCardImg } from "../utils/constants";
 
-const RestaurantCard = (props) => {
-  const { restroData } = props;
+const RestaurantCard = ({ user, restroData }) => {
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
     restroData?.info;
   const { deliveryTime } = restroData?.info?.sla;
@@ -15,9 +14,11 @@ const RestaurantCard = (props) => {
       <div className="p-2 ">
         <p className="font-extrabold text-lg">{name}</p>
         <p className="text-sm">{cuisines.join(", ")}</p>
-        <p className="font-semibold">{avgRating} ⭐ </p>
-        <p>{costForTwo}</p>
+        <p className="font-semibold text-sm">{avgRating} ⭐ </p>
+        <p className="text-sm">{costForTwo}</p>
         <p>{deliveryTime} minutes</p>
+        <p>{user.nameOrg}</p>
+        <p>{user.email}</p>
       </div>
     </div>
   );

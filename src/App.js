@@ -7,6 +7,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
+import Cart from "./components/Cart";
 
 //chunking
 //code splitting
@@ -21,7 +22,7 @@ const AppLayout = () => {
   return (
     <div className="applayout font-mont">
       <Header />
-      <Outlet />
+      <Outlet name="Namaste Pahad" />
     </div>
   );
 };
@@ -33,19 +34,23 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <Body
+            user={{ nameOrg: "namaste Pahad", email: "piyushb790@gmail.com" }}
+          />
+        ),
       },
       {
         path: "/about",
-        element: (
-          <Suspense fallback={<h1>loading..</h1>}>
-            <About />
-          </Suspense>
-        ),
+        element: <About />,
       },
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/instamart",

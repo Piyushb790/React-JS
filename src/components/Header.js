@@ -5,15 +5,13 @@ import useIsOnline from "../utils/useIsOnline";
 import cart from "../Assets/cart.png";
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
-  console.log("whole header render");
-  useEffect(() => {
-    // console.log("useEffect is Called");
-  }, []);
+
+  useEffect(() => {}, []);
   // when i put something into [] dependency array then everytime dependency updated useEffect also called
   const online = useIsOnline();
 
   return (
-    <div className="flex justify-between items-center  p-2 bg-babypink shadow-sm font-bold ">
+    <div className="flex justify-between items-center  p-2 bg-babypink shadow-md font-bold ">
       <div>
         <img width="64" height="64" src={logoSrc} alt="logo " />
       </div>
@@ -35,9 +33,11 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex gap-3 items-center text-lg">
-          <li>
-            <img src={cart} className="w-10" />
-          </li>
+          <Link to="/cart">
+            <li>
+              <img src={cart} className="w-10" />
+            </li>
+          </Link>
 
           <li>
             <button
