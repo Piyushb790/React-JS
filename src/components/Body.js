@@ -1,8 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { defaultRestraunts } from "../utils/constants";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../context/UserContext";
 const Body = ({ user }) => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -11,7 +12,9 @@ const Body = ({ user }) => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(listOfRestaurant);
+
+  const { setUserName, loggedInUser } = useContext(UserContext);
+
   const fetchData = async () => {
     const data = await fetch(defaultRestraunts);
     const json = await data.json();
@@ -53,6 +56,14 @@ const Body = ({ user }) => {
         >
           Search
         </button>
+        <label className="ml-10">UserName</label>{" "}
+        <input
+          type="text"
+          className="p-2 border-2 border-crimson rounded-md"
+          placeholder="change context"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className="filter mt-2">
         <button
@@ -61,7 +72,6 @@ const Body = ({ user }) => {
             (filteredList = listOfRestaurant.filter(
               (resRat) => resRat.info.avgRating > 4
             )),
-            console.log(filteredList),
             setFilteredRestaurant(filteredList)
           )}
         >

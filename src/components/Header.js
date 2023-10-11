@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { logoSrc } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import cart from "../Assets/cart.png";
+import UserContext from "../context/UserContext";
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
 
   useEffect(() => {}, []);
   // when i put something into [] dependency array then everytime dependency updated useEffect also called
   const online = useIsOnline();
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="flex justify-between items-center  p-2 bg-babypink shadow-md font-bold ">
@@ -51,6 +53,7 @@ const Header = () => {
               {btnName}
             </button>
           </li>
+          <li>{loggedInUser}</li>
           <div>Status: {online ? "🟢" : "🔴"}</div>
         </ul>
       </div>
